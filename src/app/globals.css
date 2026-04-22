@@ -1,26 +1,123 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-mulish), sans-serif;
+  --color-navy: #00193a;
+  --color-navy-dark: #002350;
+  --color-blue: #0073bb;
+  --color-blue-hover: #068adc;
+  --color-orange: #e27733;
+  --color-lavender: #f0f0f8;
+  --color-muted: #8ca0b4;
+  --color-text-body: #404040;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    scroll-padding-top: 80px;
+  }
+
+  body {
+    color: #404040;
+    background: #ffffff;
+    line-height: 1.6;
+    font-size: 16px;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #00193a;
+    font-weight: 700;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #002350;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 32px;
+  height: 3px;
+  background-color: #e27733;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #0073bb;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-transform: uppercase;
+}
+
+.cta-button:hover {
+  background-color: #068adc;
+  color: #ffffff;
+}
+
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #0073bb;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.link-arrow:hover {
+  color: #068adc;
+}
+
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes scroll-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-scroll-left {
+  animation: scroll-left 30s linear infinite;
+}
+
+.animate-scroll-right {
+  animation: scroll-right 30s linear infinite;
+}
+
+.grayscale {
+  filter: grayscale(100%);
+}
+
+.grayscale-hover:hover {
+  filter: grayscale(0%);
+  transition: filter 0.3s;
 }
